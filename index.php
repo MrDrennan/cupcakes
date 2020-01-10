@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 require('includes/cupcake-functions.inc.php');
 
-$cakeOptions = [
+$cakeFlavors = [
     "grasshopper" => "The Grasshopper",
     "maple" => "Whiskey Maple Bacon",
     "carrot" => "Carrot Walnut",
@@ -16,11 +16,11 @@ $cakeOptions = [
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = [];
+    var_dump($_POST);
 
     $name = validateRequiredField('name', $errors);
 
-    validateRequiredSelection($cakeOptions, $errors);
-
+    validateRequiredSelection('flavors', $cakeFlavors, $errors);
 
     if (empty($errors)) {
         include 'confirmation.php';

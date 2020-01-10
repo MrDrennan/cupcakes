@@ -1,20 +1,46 @@
 <?php
 
-function validateRequiredField($name, &$errors) {
-    $value = trim($_POST[$name]);
+function validateRequiredField($postKey, &$errors) {
+    $value = trim($_POST[$postKey]);
 
     if (empty($value)) {
-        $errors[] = 'req' . ucfirst($name);
+        $errors[] = 'req' . ucfirst($postKey);
         return null;
     }
     return $value;
 }
 
-function validateRequiredSelection($options, &$errors) {
-    foreach ($options as $name => $displayText) {
-        if (isset($_POST[$name])) {
-            return;
+function validateRequiredSelection($postKey, $validOptions, &$errors) {
+    $hasSelectedOption = false;
+
+    if (isset($_POST[$postKey])) {
+
+        foreach ($_POST[$postKey] as $option) {
+
+            // Chose at least 1 valid option
+            if (array_key_exists($option, $validOptions)) {
+                $hasSelectedOption = true;
+            }
+            else { // Spoofing the form
+                $errors[] = 'invalid' . ucfirst($postKey);
+                return;
+            }
         }
     }
-    $errors[] = 'reqOption';
+
+    if (!$hasSelectedOption) {
+        $errors[] = 'req' . ucfirst($postKey);
+    }
+}
+
+function stickVal($postKey) {
+    if (isset($_POST[$postKey])) {
+        echo "value='$_POST[$postKey]'";
+    }
+}
+
+function stickCheck($postKey, $val) {
+    if (isset($_POST[$postKey]) && $_POST[$postKey] === $val) {
+        echo "checked";
+    }
 }

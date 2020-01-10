@@ -15,15 +15,15 @@
 <main>
     <form action="#" method="post">
         <label for="name">Your name:</label>
-        <input id="name" name="name" type="text">
+        <input id="name" name="name" type="text" <?php stickVal('name'); ?>>
 
         <h2>Cupcake flavors:</h2>
 
         <ul>
             <?php
-            foreach ($cakeOptions as $name => $displayTxt) {
+            foreach ($cakeFlavors as $name => $displayTxt) {
                 echo "<li>
-                          <input type='checkbox' id='$name' name='$name'>
+                          <input type='checkbox' id='$name' name='flavors[]' value='$name'>
                           <label for='$name'>$displayTxt</label>
                       </li>";
             }
