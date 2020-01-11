@@ -14,7 +14,15 @@
 </header>
 <main>
     <?php
-    echo '<h2>Success!! Your order has been submitted</h2>';
+
+    echo "<h2>Thank you, $name, for your order!</h2>
+          <p>Order Summary:</p>
+          <ul>";
+            foreach ($flavors as $currFlavor) {
+                echo "<li>$cakeFlavors[$currFlavor]</li>";
+            }
+    echo "</ul>
+          <p>Order Total: $" . number_format($total, 2) . "</p>";
     ?>
 </main>
 </body>

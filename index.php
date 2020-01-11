@@ -20,10 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     var_dump($_POST);
 
     $name = validateRequiredField('name', $errors);
-
-    validateRequiredSelection('flavors', $cakeFlavors, $errors);
+    $flavors = validateRequiredSelection('flavors', $cakeFlavors, $errors);
 
     if (empty($errors)) {
+        define("CUPCAKE_PRICE", 3.5);
+        $total = count($flavors) * CUPCAKE_PRICE;
+
         include 'confirmation.php';
     }
     else {

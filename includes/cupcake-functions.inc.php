@@ -15,22 +15,25 @@ function validateRequiredSelection($postKey, $validOptions, &$errors) {
 
     if (isset($_POST[$postKey])) {
 
-        foreach ($_POST[$postKey] as $option) {
+        foreach ($_POST[$postKey] as $currOption) {
 
             // Chose at least 1 valid option
-            if (array_key_exists($option, $validOptions)) {
+            if (array_key_exists($currOption, $validOptions)) {
                 $hasSelectedOption = true;
             }
             else { // Spoofing the form
                 $errors[] = 'invalid' . ucfirst($postKey);
-                return;
+                return null;
             }
         }
     }
 
+    // Set error if no option was selected
     if (!$hasSelectedOption) {
         $errors[] = 'req' . ucfirst($postKey);
+        return null;
     }
+    return $_POST[$postKey];
 }
 
 function stickVal($postKey) {
