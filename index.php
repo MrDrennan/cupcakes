@@ -14,8 +14,9 @@ $cakeFlavors = [
     "tiramisu" => "Tiramisu"
 ];
 
+$errors = [];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = [];
     var_dump($_POST);
 
     $name = validateRequiredField('name', $errors);

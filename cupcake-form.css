@@ -1,0 +1,8 @@
+.err {
+    color: darkred;
+    display: none;
+}
+
+button {
+    display: block;
+}

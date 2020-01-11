@@ -40,7 +40,14 @@ function stickVal($postKey) {
 }
 
 function stickCheck($postKey, $val) {
-    if (isset($_POST[$postKey]) && $_POST[$postKey] === $val) {
-        echo "checked";
+    if (isset($_POST[$postKey]) && in_array($val, $_POST[$postKey])) {
+        return "checked";
+    }
+    return "";
+}
+
+function showError($errorId, $errors) {
+    if (in_array($errorId, $errors)) {
+        echo "style='display:initial;'";
     }
 }
