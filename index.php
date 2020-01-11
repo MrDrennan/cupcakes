@@ -1,4 +1,14 @@
 <?php
+/**
+ * This website orders cupcakes with a form and displays the order upon reaching
+ * the confirmation page. It will display errors to the user if form not filled in
+ * correctly.
+ *
+ * @author  Chad Drennan
+ * Date: 1/10/20
+ * @link http://cdrennan.greenriverdev.com/328/cupcakes
+ */
+
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
@@ -17,7 +27,6 @@ $cakeFlavors = [
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
 
     $name = validateRequiredField('name', $errors);
     $flavors = validateRequiredSelection('flavors', $cakeFlavors, $errors);

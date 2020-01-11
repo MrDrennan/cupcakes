@@ -11,6 +11,7 @@
 <body>
 <header>
     <h1>Cupcake Fundraiser</h1>
+    <hr>
 </header>
 <main>
     <form action="#" method="post">
@@ -20,8 +21,7 @@
             Must enter your name
         </span>
 
-        <h2>Cupcake flavors*:</h2>
-
+        <p>Cupcake flavors*:</p>
         <ul>
             <?php
             foreach ($cakeFlavors as $name => $displayTxt) {

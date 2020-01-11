@@ -1,8 +1,64 @@
-.err {
-    color: darkred;
-    display: none;
+* {
+    font-family: sans-serif;
 }
 
 button {
     display: block;
+    color: white;
+    background-color: royalblue;
+    padding: .5rem .75rem;
+    border-radius: .25rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    filter: brightness(92%);
+}
+
+.err {
+    color: orangered;
+    display: none;
+}
+
+form {
+    grid-column: 2 / 3;
+    margin-top: 35px;
+}
+
+header h1 {
+    font-size: 7vw;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: .1em;
+}
+
+input[type='text'] {
+    display: block;
+    height: 24px;
+    border-radius: .25rem;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+main {
+    display: grid;
+    grid-template-columns: auto 220px auto;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 10px;
+    margin-top: 0;
 }
